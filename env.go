@@ -9,11 +9,9 @@ func init() {
 	err := dotenv.Load("./", ".env")
 	if err != nil {
 		cliutil.Redln("Error loading .env file,", err)
-		return
+		panic(err)
 	}
 	cliutil.Greenln("Loaded .env file successfully!")
 }
 
-func Get(name string) string {
-	return dotenv.Get(name)
-}
+var Get = dotenv.Get
